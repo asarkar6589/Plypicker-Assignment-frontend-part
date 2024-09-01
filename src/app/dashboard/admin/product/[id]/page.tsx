@@ -1,8 +1,8 @@
 'use client';
 
-import React, { FormEvent, useEffect, useState } from 'react';
 import axios from 'axios';
 import { useRouter } from 'next/navigation';
+import { FormEvent, useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
 
 interface Params {
@@ -62,10 +62,8 @@ const ProductPage = ({ params }: { params: Params }) => {
                 },
                 withCredentials: true,
             });
-            // Show success toast message
-            toast.success(response.data.message || "Product updated successfully!");
 
-            // Redirect to /dashboard/admin
+            toast.success(response.data.message || "Product updated successfully!");
             router.push('/dashboard/admin');
             router.refresh(); // to show the updated data in the server component.
         } catch (error: any) {

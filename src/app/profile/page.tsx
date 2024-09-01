@@ -1,12 +1,12 @@
 'use client';
+import Loader from '@/components/Loader';
 import StatsTable from '@/components/StatsTable';
 import axios from 'axios';
 import Link from 'next/link';
 import { redirect, useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
-import { useUserContext } from '../layout';
-import Loader from '@/components/Loader';
+import { useUserContext } from '../context/UserContext';
 
 interface CountOfRequestsForUser {
     approvedRequest: number;
@@ -34,9 +34,10 @@ const ProfilePage = () => {
             });
 
             if (apiResponse.data.success) {
+                console.log(apiResponse.data);
                 setUser(null);
                 toast.success(apiResponse.data.message);
-                router.replace('/login');
+                router.replace('/');
             }
         } catch (error: any) {
             toast.error(error.message);

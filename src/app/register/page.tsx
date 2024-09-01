@@ -4,7 +4,7 @@ import React, { FormEvent, useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
 import { useRouter } from 'next/navigation';
 import axios from 'axios';
-import { useUserContext } from '../layout';
+import { useUserContext } from '../context/UserContext';
 
 const RegistrationForm = () => {
     const router = useRouter();

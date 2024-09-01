@@ -1,5 +1,3 @@
-import React from 'react';
-import axios from 'axios';
 import ProductCardComponent from '@/components/ProductCardComponent';
 
 const fetchProducts = async () => {
@@ -34,7 +32,7 @@ const AdminDashBoard = async () => {
                     <ProductCardComponent
                         id={product._id}
                         key={product._id}
-                        image={product.image}  // Assuming product.image is a valid URL
+                        image={product.image}
                         name={product.name}
                         description={product.description}
                         price={product.price}

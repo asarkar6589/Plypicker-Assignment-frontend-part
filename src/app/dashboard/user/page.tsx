@@ -1,4 +1,3 @@
-import Loader from '@/components/Loader';
 import ProductCardComponent from '@/components/ProductCardComponent';
 import axios from 'axios';
 

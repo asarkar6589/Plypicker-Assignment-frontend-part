@@ -1,8 +1,7 @@
 'use client';
 
-import { useUserContext } from '@/app/layout';
+import { useUserContext } from '@/app/context/UserContext';
 import Link from 'next/link';
-import React from 'react';
 
 interface ProductCardProps {
     id: string;

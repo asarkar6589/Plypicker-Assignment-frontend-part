@@ -1,5 +1,6 @@
 'use client';
-import { useUserContext } from "./layout";
+
+import { useUserContext } from "./context/UserContext";
 
 const Page = () => {
   const { user } = useUserContext();

@@ -1,11 +1,11 @@
 'use client';
 
+import Loader from '@/components/Loader';
 import axios from 'axios';
 import Link from 'next/link';
 import { redirect } from 'next/navigation';
 import { useEffect, useState } from "react";
-import { useUserContext } from "../layout";
-import Loader from '@/components/Loader';
+import { useUserContext } from '../context/UserContext';
 
 export interface Request {
     _id: string;

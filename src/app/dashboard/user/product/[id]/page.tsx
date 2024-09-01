@@ -1,10 +1,10 @@
 'use client';
+import { useUserContext } from '@/app/context/UserContext';
 import Modal from '@/components/Modal';
-import React, { FormEvent, useEffect, useState } from 'react';
 import axios from 'axios';
+import { useRouter } from 'next/navigation';
+import { FormEvent, useEffect, useState } from 'react';
 import { toast } from 'react-hot-toast';
-import { useUserContext } from '@/app/layout';
-import { useRouter } from 'next/navigation'
 
 interface Params {
     id: string;

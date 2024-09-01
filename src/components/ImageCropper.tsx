@@ -13,8 +13,8 @@ interface Params {
 }
 
 const ImageCropper = ({ updateImage, closeModal }: Params) => {
-    const imageRef = useRef<HTMLImageElement | null>(null); // Change to HTMLImageElement | null
-    const previewCanvasRef = useRef<HTMLCanvasElement | null>(null); // Keep HTMLCanvasElement | null
+    const imageRef = useRef<HTMLImageElement | null>(null);
+    const previewCanvasRef = useRef<HTMLCanvasElement | null>(null);
     const [img, setImg] = useState<string>('');
     const [crop, setCrop] = useState<Crop>({
         unit: '%',
@@ -26,7 +26,7 @@ const ImageCropper = ({ updateImage, closeModal }: Params) => {
     const [error, setError] = useState<string>('')
 
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-        const file = e.target.files?.[0]; // Accessing the first file from the files array
+        const file = e.target.files?.[0];
 
         if (!file) {
             return;
@@ -51,7 +51,7 @@ const ImageCropper = ({ updateImage, closeModal }: Params) => {
 
             })
             setImg(imageUrl);
-            imageRef.current = imageElement; // Set the imageRef to the new image element
+            imageRef.current = imageElement;
         });
 
         reader.readAsDataURL(file);
@@ -95,31 +95,29 @@ const ImageCropper = ({ updateImage, closeModal }: Params) => {
 
     const dataURLToFile = (dataURL: string, filename: string): File => {
         const arr = dataURL.split(',');
-        
-        // Check if the dataURL is valid
+
         if (arr.length !== 2) {
             throw new Error("Invalid data URL");
         }
-        
+
         const mimeMatch = arr[0].match(/:(.*?);/);
-        
-        // Check if mimeMatch is not null
+
         if (!mimeMatch) {
             throw new Error("MIME type not found in data URL");
         }
-        
+
         const mime = mimeMatch[1];
         const bstr = atob(arr[1]);
         let n = bstr.length;
         const u8arr = new Uint8Array(n);
-    
+
         while (n--) {
             u8arr[n] = bstr.charCodeAt(n);
         }
-    
+
         return new File([u8arr], filename, { type: mime });
     };
-    
+
 
     return (
         <>
@@ -130,8 +128,8 @@ const ImageCropper = ({ updateImage, closeModal }: Params) => {
                     id="image"
                     name="image"
                     className="block w-full text-sm text-slate-500 file:mr-4 file:py-1 file:px-2 file:rounded-full file:border-0 file:text-xs file:bg-gray-700 file:text-sky-300 hover:file:bg-gray-600"
-                    onChange={handleChange} // Passing the event handler directly
-                    accept="image/*" // Restricting input to image files only
+                    onChange={handleChange}
+                    accept="image/*"
                 />
             </label>
             {
