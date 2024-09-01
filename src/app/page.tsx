@@ -1,7 +1,7 @@
 'use client';
 import { useUserContext } from "./layout";
 
-const page = () => {
+const Page = () => {
   const { user } = useUserContext();
 
   return (
@@ -16,4 +16,4 @@ const page = () => {
   )
 }
 
-export default page;
+export default Page;
