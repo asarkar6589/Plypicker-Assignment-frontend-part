@@ -26,7 +26,7 @@ const ProfilePage = () => {
         try {
             setDisable(true);
 
-            const apiResponse = await axios.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/user/logout`, {
+            const apiResponse = await axios.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/user/logout`, {}, {
                 headers: {
                     'Content-Type': 'application/json',
                 },
@@ -34,7 +34,6 @@ const ProfilePage = () => {
             });
 
             if (apiResponse.data.success) {
-                console.log(apiResponse.data);
                 setUser(null);
                 toast.success(apiResponse.data.message);
                 router.replace('/');
