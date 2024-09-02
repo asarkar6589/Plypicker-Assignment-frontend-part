@@ -31,7 +31,12 @@ const PendingRequestsPage = () => {
         } else {
             const fetchRequests = async () => {
                 try {
-                    const response = await axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/change/all`);
+                    const response = await axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/change/all`, {
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        withCredentials: true
+                    });
                     setRequests(response.data.requests);
                 } catch (error) {
                     console.error("Error fetching requests:", error);
