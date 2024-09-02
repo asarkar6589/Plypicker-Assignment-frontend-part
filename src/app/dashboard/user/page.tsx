@@ -1,20 +1,27 @@
 import ProductCardComponent from '@/components/ProductCardComponent';
-import axios from 'axios';
 
 const fetchProducts = async () => {
     try {
-        const apiResponse = await axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/product/all`, {
+        const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/product/all`, {
             headers: {
                 'Content-Type': 'application/json',
             },
-            withCredentials: true,
+            credentials: 'include',
+            cache: 'no-store',
         });
-        return apiResponse.data.products;
+
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+
+        const data = await response.json();
+        return data.products;
     } catch (error: any) {
         console.error("Error fetching products:", error);
         return [];
     }
 };
+
 
 const UserDashBoard = async () => {
     const products = await fetchProducts();
